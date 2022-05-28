@@ -1,0 +1,31 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+}
+
+group 'xyz.andrewtran'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "17"
+    modules = ['javafx.controls', 'javafx.web', 'javafx.fxml', 'javafx.graphics', 'javafx.swing']
+    configuration = 'compileOnly'
+}
+
+application {
+    mainModule = 'xyz.andrewtran.chemclock'
+    mainClassName = 'xyz.andrewtran.chemclock.ChemClock'
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'xyz.andrewtran.chemclock.ChemClock'
+        )
+
+    }
+}
