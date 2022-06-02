@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="320.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xyz.andrewtran.chemclock.MainController">
+   <children>
+      <Canvas fx:id="canvas" height="320.0" width="480.0" />
+      <Button fx:id="settingsButton" mnemonicParsing="false" text="Open Settings" translateX="155.0" translateY="-130.0" />
+   </children>
+</StackPane>

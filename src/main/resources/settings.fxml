@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane prefHeight="320" prefWidth="480" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xyz.andrewtran.chemclock.SettingsController">
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="20.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints minWidth="10.0" prefWidth="120.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="120.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="120.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="120.0" />
+   </columnConstraints>
+   <children>
+      <Button fx:id="doneButton" mnemonicParsing="false" prefWidth="75" text="Done" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
+      <Label text="Settings" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <CheckBox fx:id="dateFormatCheck" mnemonicParsing="false" text="24 Hour" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Label text="Background" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <ChoiceBox fx:id="backgroundChoice" prefWidth="250.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+      <Button fx:id="shutdownButton" mnemonicParsing="false" text="Shut Down" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+      <Label text="Current Time:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Label text="X:XX" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5">
+         <children>
+            <Button mnemonicParsing="false" text="+H" />
+            <Button mnemonicParsing="false" text="-H" />
+            <Button mnemonicParsing="false" text="+M" />
+            <Button mnemonicParsing="false" text="-M" />
+         </children>
+         <padding>
+            <Insets left="25.0" />
+         </padding>
+      </HBox>
+      <Label text="Provide the time in 24 hour format." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+   </children>
+</GridPane>
