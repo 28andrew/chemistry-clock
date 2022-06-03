@@ -11,14 +11,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TouchEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class MainController {
     ChemClock chemClock;
@@ -28,13 +23,11 @@ public class MainController {
     private GraphicsContext graphicsContext;
     @FXML
     private Button settingsButton;
-    private Timeline timeline;
     private Font digitalFont;
-    private DateFormat dateFormat12 = new SimpleDateFormat("hh:mm");
-    private DateFormat dateFormat24 = new SimpleDateFormat("HH:mm");
 
     @FXML
     public void initialize() {
+        chemClock = ChemClock.instance;
         // Settings button hide logic
         settingsButton.setVisible(false);
         canvas.requestFocus();
@@ -67,7 +60,7 @@ public class MainController {
     private void startLoop() {
         Duration oneFrameAmt = Duration.millis(1000 / 15f); // 15 fps
         KeyFrame oneFrame = new KeyFrame(oneFrameAmt, this::render);
-        timeline = new Timeline();
+        Timeline timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.getKeyFrames().add(oneFrame);
         timeline.play();
@@ -80,19 +73,28 @@ public class MainController {
         graphicsContext.fillRect(0, 0, 480, 320);
         // Background
         String backgroundName = chemClock.getConfig().getBackground();
-        graphicsContext.setFill(Color.BLACK);
+        Color fontColor = Color.BLACK;
+        graphicsContext.setFill(fontColor);
         if (!backgroundName.startsWith(">")) {
             Background background = Configuration.getBackgroundFromName(backgroundName);
             graphicsContext.drawImage(background.getImage(), 0, 0);
-            graphicsContext.setFill(background.getTimeColor());
+            fontColor = background.getTimeColor();
+            graphicsContext.setFill(fontColor);
         } else {
             String customBackgroundName = backgroundName.substring(1);
             Image customBackground = chemClock.getCustomBackgrounds().imageMap.get(customBackgroundName);
             graphicsContext.drawImage(customBackground, 0, 0);
         }
+        // Widget
+        String widgetName = chemClock.getConfig().getWidget();
+        if (!widgetName.equals("None")) {
+            Widget widget = Widget.widgetMap.get(widgetName);
+            widget.draw(graphicsContext, fontColor, chemClock.getConfig().getHourIndex());
+
+        }
         // Time
         graphicsContext.setFont(digitalFont);
-        String time = (chemClock.getConfig().isUsing24Format() ? dateFormat24 : dateFormat12).format(new Date());
-        graphicsContext.fillText(time, 5, 200);
+        graphicsContext.setFill(fontColor);
+        graphicsContext.fillText(chemClock.getConfig().getTimeFormatted(), 5, 200);
     }
 }

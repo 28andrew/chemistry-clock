@@ -32,7 +32,7 @@ public class Background {
         }
 
         try {
-            image = new Image(getClass().getClassLoader().getResource("background/" + name + ".png").openStream());
+            image = new Image(Background.class.getClassLoader().getResource("background/" + name + ".png").openStream());
             return image;
         } catch (IOException e) {
             e.printStackTrace();
